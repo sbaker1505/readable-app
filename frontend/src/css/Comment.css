@@ -1,0 +1,43 @@
+@import url('./Post.css');
+
+.comment {
+  width: calc(100% - 20px);
+  margin: 10px auto;
+
+  background-color: white;
+  border-radius: 5px;
+}
+
+.comment-top {
+  width: calc(100% - 20px);
+  margin: auto;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+}
+
+.comment-body {
+  width: calc(100% - 60px);
+  margin: auto;
+  padding-left: 10px;
+
+  border-left: 2px solid #c09f80;
+
+}
+
+.comment-bottom {
+  width: calc(100% - 20px);
+  margin: auto;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+
+}
+
+h3 {
+  font-size: .9em;
+}

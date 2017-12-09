@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant:400,500,700|Roboto:100,300,400,500');
+
+* {
+  font-size: 16px;
+
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  font-family: 'Cormorant', serif;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: right;
+}
+
+h4 {
+  font-weight: 300;
+
+  text-align: right;
+}
+
+.nav {
+  background-color: ivory;
+  padding: 10px 0;
+}
+
+.header {
+  width: 100%;
+  padding-bottom: 10px;
+
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.nav ul {
+  width: calc(100% - 60px);
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+
+  list-style: none;
+}
+
+.post-list {
+  width: calc(100% - 60px);
+  margin: auto;
+  padding-top: 10px;
+
+  border-bottom: 1px solid black;
+}
+
+.post-min {
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid black;
+}
+
+.post-min h1 {
+  font-size: 1.5em;
+}
+
+.post-info h2 {
+  font-weight: 100;
+}

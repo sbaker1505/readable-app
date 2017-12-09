@@ -1,0 +1,37 @@
+.post {
+  margin: auto;
+  max-width: 500px;
+
+
+  background-color: #f1e7df;
+  border: 1px solid black;
+}
+
+.post-top {
+  width: calc(100% - 20px);
+  margin: auto;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  border-bottom: 1px solid black;
+}
+
+.post-body {
+  width: calc(100% - 20px);
+  margin: auto;
+  padding: 20px 0;
+}
+
+.post-bottom {
+  width: calc(100% - 20px);
+  margin: auto;
+  padding: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+
+  border-top: 1px solid black;
+}
