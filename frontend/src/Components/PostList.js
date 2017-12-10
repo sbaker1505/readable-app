@@ -24,20 +24,52 @@ const postInfo = [
   }
 ]
 
+const urlAPI = endpoint => `http://localhost:3001${endpoint}`
+
+const headers = {
+  'Accept': 'application/json',
+  'Authorization': 'sbaker1505',
+  'Content-Type': 'application/json'
+}
+
 export default class PostList extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  componentDidMount() {
+    fetch(urlAPI(this.props.endpoint), {headers})
+    .then(res => {
+      if (!res.ok) {
+        throw Error("Network request failed")
+      }
+      return res
+    })
+    .then(d => d.json())
+    .then(d => {
+      this.setState({
+        posts: d
+      })
+    })
+  }
+
   render () {
+    if (!this.state.posts) return <p>Loading...</p>
+
     return (
       <div className="post-list">
         {this.props.category === 'All'
         ?
-        postInfo
+        this.state.posts
           .map((post) =>
             <PostMin
+              key={post.id}
               post={post}
             />
           )
         :
-        postInfo
+        this.state.posts
           .filter((post) => (post.category === this.props.category))
           .map((post) =>
             <PostMin

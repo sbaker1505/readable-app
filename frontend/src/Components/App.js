@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PostList from './PostList';
 import '../css/App.css';
+import * as ReadableAPI from '../Util/api';
 
 class App extends Component {
   state = {
-    category: 'All'
+    category: 'All',
   }
+
+  // Lifecycle Request
+  // componentDidMount() {
+  //   ReadableAPI.fetchPosts().then((posts) => this.setState({posts}))
+  // }
+
+
 
   render() {
     return (
@@ -37,6 +45,7 @@ class App extends Component {
         </div>
         <PostList
           category={this.state.category}
+          endpoint='/posts'
         />
       </div>
     );
