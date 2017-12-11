@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PostMin from './PostMin';
-import * as ReadableAPI from '../Util/api';
+// import PostMin from './PostMin';
+// import * as ReadableAPI from '../Util/api';
 
 export default class PostList extends Component {
   render () {
