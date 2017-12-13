@@ -12,13 +12,7 @@ const headers = {
 }
 
 export const fetchPosts = () => {
-  fetch(`${api}/posts`, headers)
-  .then(res => {
-    if (!res.ok) {
-      throw Error("Network request failed")
-    }
-    return res
-  })
+  return fetch(`${api}/posts`, { headers })
   .then(d => d.json())
   .then(data => data)
 }
