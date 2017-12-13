@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PostList from './PostList';
 import '../css/App.css';
 import { connect } from 'react-redux';
-import { getAllPosts } from '../Actions'
+import { getAllCategories } from '../Actions'
 
 // const p = [
 //   {
@@ -30,7 +30,7 @@ import { getAllPosts } from '../Actions'
 class App extends Component {
 
   componentDidMount(){
-    this.props.callAllPosts()
+    this.props.callAllCategories()
   }
 
   render() {
@@ -40,18 +40,21 @@ class App extends Component {
           <h1 className="header">Readable Forum</h1>
           <ul className="controls">
             <li>
-              <label>
-                <input list="category" placeholder="Category"/>
-              </label>
-              <datalist id="category">
+              <label>Category </label>
+              <select id="category">
                 <option value="All">All</option>
-                <option value="Lorem ipsum">Lorem ipsum</option>
-                <option value="Coffee ipsum">Coffee ipsum</option>
-                <option value="Cats">Cats</option>
-              </datalist>
+                {this.props.categories.length > 0
+                  ? this.props.categories.map(category =>
+                    <option
+                      key={category.path}
+                      value={category.path}>
+                      {category.name}
+                    </option>)
+                  : null}
+              </select>
             </li>
             <li>
-              <label>Sort By</label>
+              <label>Sort By </label>
               <select>
                 <option>Title</option>
                 <option>Date</option>
@@ -67,16 +70,16 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({post}) {
+function mapStateToProps({categories}) {
   return {
-    post
+    categories
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    callAllPosts: () => {
-      dispatch(getAllPosts())
+    callAllCategories: () => {
+      dispatch(getAllCategories())
     }
   }
 }
