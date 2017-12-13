@@ -31,7 +31,6 @@ class App extends Component {
 
   componentDidMount(){
     this.props.callAllPosts()
-    console.log('hello');
   }
 
   render() {
@@ -68,8 +67,7 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { post } = state
+function mapStateToProps({post}) {
   return {
     post
   }
@@ -79,9 +77,8 @@ function mapDispatchToProps(dispatch) {
   return {
     callAllPosts: () => {
       dispatch(getAllPosts())
-      console.log('yay');
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

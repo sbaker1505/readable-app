@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-// import PostMin from './PostMin';
-// import * as ReadableAPI from '../Util/api';
+import { connect } from 'react-redux';
+import { getAllPosts } from '../Actions'
+import PostMin from './PostMin';
 
-export default class PostList extends Component {
+class PostList extends Component {
+
+  componentDidMount(){
+    this.props.callAllPosts()
+  }
+
+
   render () {
-
     return (
       <div className="post-list">
-        Hello world
+        {this.props.post.length > 0
+          ? this.props.post.map(post =>
+            <PostMin
+              key={post.id}
+              post={post}
+            />)
+          : <p>Loading...</p>}
         {/* {this.props.category === 'All'
         ?
         this.state.posts
@@ -30,3 +42,19 @@ export default class PostList extends Component {
     )
   }
 }
+
+function mapStateToProps({post}) {
+  return {
+    post
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    callAllPosts: () => {
+      dispatch(getAllPosts())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)
