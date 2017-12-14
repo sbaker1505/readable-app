@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PostMin from './PostMin';
 import '../css/App.css';
 import { connect } from 'react-redux';
-import { getAllPosts, getAllCategories } from '../Actions'
+import { getAllPosts, getAllCategories, getAllPostsFromCategory } from '../Actions'
 
 class App extends Component {
 
@@ -19,7 +19,14 @@ class App extends Component {
           <ul className="controls">
             <li>
               <label>Category </label>
-              <select id="category">
+              <select
+                id="category"
+                onChange={(event) => (
+                  event.target.value === 'All'
+                  ? this.props.callAllPosts()
+                  : this.props.callAllPostsFromCategory(event.target.value)
+                )}
+                >
                 <option value="All">All</option>
                 {this.props.categories.length > 0
                   ? this.props.categories.map(category =>
@@ -49,7 +56,7 @@ class App extends Component {
                 key={post.id}
                 post={post}
               />)
-            : <p>Loading...</p>}
+            : <p>No posts found</p>}
         </div>
       </div>
     );
@@ -66,7 +73,8 @@ function mapStateToProps({categories, post}) {
 function mapDispatchToProps(dispatch) {
   return {
     callAllCategories: () => { dispatch(getAllCategories()) },
-    callAllPosts: () => { dispatch(getAllPosts()) }
+    callAllPosts: () => { dispatch(getAllPosts()) },
+    callAllPostsFromCategory: (category) => { dispatch(getAllPostsFromCategory(category)) }
   }
 }
 

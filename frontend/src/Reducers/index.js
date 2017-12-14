@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { GET_POST, GET_CATEGORY } from '../Actions'
+import { GET_POST, GET_CATEGORY, GET_POST_FROM_CATEGORY } from '../Actions'
 
 const initialState = {
   categories: [],
@@ -24,6 +24,8 @@ function post (state = initialState, action) {
 
   switch (action.type) {
     case GET_POST :
+      return post
+    case GET_POST_FROM_CATEGORY :
       return post
     default:
       return state
