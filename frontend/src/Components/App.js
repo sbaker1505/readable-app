@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import PostList from './PostList';
+import PostMin from './PostMin';
 import '../css/App.css';
 import { connect } from 'react-redux';
-import { getAllCategories } from '../Actions'
+import { getAllPosts, getAllCategories } from '../Actions'
 
 class App extends Component {
 
   componentDidMount(){
     this.props.callAllCategories()
+    this.props.callAllPosts()
   }
 
   render() {
@@ -41,23 +42,31 @@ class App extends Component {
             <li>Add Post</li>
           </ul>
         </div>
-        <PostList />
+        <div className="post-list">
+          {this.props.post.length > 0
+            ? this.props.post.map(post =>
+              <PostMin
+                key={post.id}
+                post={post}
+              />)
+            : <p>Loading...</p>}
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({categories}) {
+function mapStateToProps({categories, post}) {
   return {
-    categories
+    categories,
+    post
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    callAllCategories: () => {
-      dispatch(getAllCategories())
-    }
+    callAllCategories: () => { dispatch(getAllCategories()) },
+    callAllPosts: () => { dispatch(getAllPosts()) }
   }
 }
 

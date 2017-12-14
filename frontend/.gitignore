@@ -4,6 +4,9 @@
 project_notes.md
 question.js
 
+# Unused or deprecated files
+/src/NOT_USED
+
 # dependencies
 /node_modules
 
