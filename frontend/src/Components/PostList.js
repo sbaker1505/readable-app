@@ -9,7 +9,6 @@ class PostList extends Component {
     this.props.callAllPosts()
   }
 
-
   render () {
     return (
       <div className="post-list">
@@ -20,24 +19,6 @@ class PostList extends Component {
               post={post}
             />)
           : <p>Loading...</p>}
-        {/* {this.props.category === 'All'
-        ?
-        this.state.posts
-          .map((post) =>
-            <PostMin
-              key={post.id}
-              post={post}
-            />
-          )
-        :
-        this.state.posts
-          .filter((post) => (post.category === this.props.category))
-          .map((post) =>
-            <PostMin
-              post={post}
-            />
-          )
-        } */}
       </div>
     )
   }
