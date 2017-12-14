@@ -11,15 +11,18 @@ const headers = {
   'Content-Type': 'application/json'
 }
 // ------ CATEGORIES -------
-export const fetchCategories = () => {
-  return fetch(`${api}/categories`, { headers })
+export const fetchCategories = () =>
+  fetch(`${api}/categories`, { headers })
   .then(d => d.json())
   .then(data => data)
-}
 
 // ------ POSTS -------
-export const fetchPosts = () => {
-  return fetch(`${api}/posts`, { headers })
+export const fetchPosts = () =>
+  fetch(`${api}/posts`, { headers })
   .then(d => d.json())
   .then(data => data)
-}
+
+export const fetchPostFromCategory = (category) =>
+  fetch(`${api}/${category}/posts`, { headers })
+  .then(d => d.json())
+  .then(data => data)
