@@ -28,7 +28,7 @@ ReactDOM.render(
           component={App}
         />
         <Route
-          path='/category/:category'
+          exact path='/category/:category'
           render={({ match }) => (
             <App category={match.params.category}/>
           )}

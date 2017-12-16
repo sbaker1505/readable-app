@@ -21,12 +21,24 @@ class App extends Component {
             <li>
               <label>Category </label>
               <ul className="categories">
+                <li>
+                  <Link
+                    to='/'
+                    onClick={() => (
+                      this.props.callAllPosts()
+                    )}
+                    className='category-link'>
+                    All
+                  </Link>
+                </li>
                 {this.props.categories.length > 0
                   ? this.props.categories.map(category =>
                     <li key={category.path}>
                       <Link
                         to={`/category/${category.path}`}
-                        // onClick={this.props.callAllPostsFromCategory(this.props.category)}
+                        onClick={() => (
+                          this.props.callAllPostsFromCategory(category.path)
+                        )}
                         className='category-link'>
                         {category.name}
                       </Link>
@@ -34,24 +46,6 @@ class App extends Component {
                   : null
                 }
               </ul>
-              {/* <select
-                id="category"
-                onChange={(event) => (
-                  event.target.value === 'All'
-                  ? this.props.callAllPosts()
-                  : this.props.callAllPostsFromCategory(event.target.value)
-                )}
-                >
-                <option value="All">All</option>
-                {this.props.categories.length > 0
-                  ? this.props.categories.map(category =>
-                    <option
-                      key={category.path}
-                      value={category.path}>
-                      {category.name}
-                    </option>)
-                  : null}
-              </select> */}
             </li>
             <li>
               <label>Sort By </label>
