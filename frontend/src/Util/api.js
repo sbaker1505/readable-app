@@ -26,3 +26,8 @@ export const fetchPostFromCategory = (category) =>
   fetch(`${api}/${category}/posts`, { headers })
   .then(d => d.json())
   .then(data => data)
+
+export const fetchFullPost = (id) =>
+  fetch(`${api}/posts/${id}`, { headers })
+  .then(d => d.json())
+  .then(data => data)

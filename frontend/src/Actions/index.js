@@ -19,6 +19,7 @@ export const getAllCategories = () => dispatch => (
 // ------ POSTS Actions -------
 export const GET_POST = 'GET_POST'
 export const GET_POST_FROM_CATEGORY = 'GET_POST_FROM_CATEGORY'
+export const GET_POST_DETAIL = 'GET_POST_DETAIL'
 export const DELETE_POST = 'DELETE_POST'
 
 // ------ POSTS Action Creators -------
@@ -29,6 +30,11 @@ export const getPost = post => ({
 
 export const getPostFromCategory = post => ({
   type: GET_POST_FROM_CATEGORY,
+  post
+})
+
+export const getPostDetails = (post) => ({
+  type: GET_POST_DETAIL,
   post
 })
 
@@ -46,4 +52,9 @@ export const getAllPosts = () => dispatch => (
 export const getAllPostsFromCategory = (category) => dispatch => (
   Api.fetchPostFromCategory(category)
     .then(post => dispatch(getPost(post)))
+)
+
+export const getFullPost = (id) => dispatch => (
+  Api.fetchFullPost(id)
+    .then((post) => dispatch(getPostDetails(post)))
 )

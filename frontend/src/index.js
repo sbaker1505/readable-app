@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 import App from './Components/App';
+import Post from './Components/Post';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -21,7 +22,22 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Switch>
+        <Route
+          exact path='/'
+          component={App}
+        />
+        <Route
+          path='/category/:category'
+          component={App}
+        />
+        <Route
+          exact path='/post/:id'
+          render={({ match }) => (
+            <Post id={match.params.id}/>
+          )}
+        />
+      </Switch>
     </BrowserRouter>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();

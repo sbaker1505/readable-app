@@ -5,7 +5,7 @@ export default class PostMin extends Component {
   render() {
     return (
       <Link
-        to={`/posts/${this.props.post.id}`}
+        to={`/post/${this.props.post.id}`}
         className="post-min-link">
         <div className="post-min">
           <h1>{this.props.post.title}</h1>
