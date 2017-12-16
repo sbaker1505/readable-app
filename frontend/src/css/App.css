@@ -29,6 +29,11 @@ h4 {
   text-align: right;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav {
   background-color: ivory;
   padding: 10px 0;
@@ -42,7 +47,7 @@ h4 {
   font-variant: small-caps;
 }
 
-.nav ul {
+.controls {
   width: calc(100% - 60px);
   margin: auto;
 
@@ -50,6 +55,37 @@ h4 {
   justify-content: space-between;
 
   list-style: none;
+}
+
+.category-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.category-menu:hover .categories {
+  display: block;
+}
+
+.categories {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  list-style-type: none;
+
+  min-width: 100%;
+  padding: 5px;
+
+  background-color: white;
+  box-shadow: 0 10px 20px dimgrey;
+}
+
+.category-link {
+  text-transform: capitalize;
+}
+
+.category-link:hover {
+  background-color: dimgrey;
+  color: red;
 }
 
 .post-list {
@@ -72,11 +108,6 @@ h4 {
 
 .post-min h1 {
   font-size: 1.5em;
-}
-
-.post-min-link:link, .post-min-link:visited {
-  text-decoration: none;
-  color: inherit;
 }
 
 .post-min-link:hover {

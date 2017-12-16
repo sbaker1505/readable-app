@@ -18,28 +18,26 @@ class App extends Component {
         <div className="nav">
           <h1 className="header">Readable Forum</h1>
           <ul className="controls">
-            <li>
+            <li className="category-menu">
               <label>Category </label>
               <ul className="categories">
-                <li>
+                <li className='category-link'>
                   <Link
                     to='/'
                     onClick={() => (
                       this.props.callAllPosts()
-                    )}
-                    className='category-link'>
+                    )}>
                     All
                   </Link>
                 </li>
                 {this.props.categories.length > 0
                   ? this.props.categories.map(category =>
-                    <li key={category.path}>
+                    <li key={category.path} className='category-link'>
                       <Link
                         to={`/category/${category.path}`}
                         onClick={() => (
                           this.props.callAllPostsFromCategory(category.path)
-                        )}
-                        className='category-link'>
+                        )}>
                         {category.name}
                       </Link>
                     </li>)
