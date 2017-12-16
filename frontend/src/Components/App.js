@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PostMin from './PostMin';
 import '../css/App.css';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getAllPosts, getAllCategories, getAllPostsFromCategory } from '../Actions'
 
 class App extends Component {
@@ -19,7 +20,21 @@ class App extends Component {
           <ul className="controls">
             <li>
               <label>Category </label>
-              <select
+              <ul className="categories">
+                {this.props.categories.length > 0
+                  ? this.props.categories.map(category =>
+                    <li key={category.path}>
+                      <Link
+                        to={`/category/${category.path}`}
+                        // onClick={this.props.callAllPostsFromCategory(this.props.category)}
+                        className='category-link'>
+                        {category.name}
+                      </Link>
+                    </li>)
+                  : null
+                }
+              </ul>
+              {/* <select
                 id="category"
                 onChange={(event) => (
                   event.target.value === 'All'
@@ -36,7 +51,7 @@ class App extends Component {
                       {category.name}
                     </option>)
                   : null}
-              </select>
+              </select> */}
             </li>
             <li>
               <label>Sort By </label>
