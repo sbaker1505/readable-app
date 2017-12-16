@@ -58,3 +58,18 @@ export const getFullPost = (id) => dispatch => (
   Api.fetchFullPost(id)
     .then((post) => dispatch(getPostDetails(post)))
 )
+
+// ------ COMMENT Actions -------
+export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
+
+// ------ COMMENT Action Creators -------
+export const getComment = comment => ({
+  type: GET_POST_COMMENTS,
+  comment
+})
+
+// ------ COMMENT Action API Dispatch -------
+export const getPostComments = (parentId) => dispatch => (
+  Api.fetchPostComments(parentId)
+    .then(comment => dispatch(getComment(comment)))
+)

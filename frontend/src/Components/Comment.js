@@ -6,16 +6,16 @@ export default class Comment extends Component {
     return (
       <div className="comment">
         <div className="comment-top">
-          <h3>Author Name</h3>
-          <h4>12/10/2017</h4>
+          <h3>{this.props.comment.author}</h3>
+          <h4>{this.props.comment.timestamp}</h4>
           <h3>(X)</h3>
         </div>
         <div className="comment-body">
-          <p>Variety, sit, affogato, white milk shop spoon mazagran. Spoon bar at galão a grounds sugar. Aroma, irish turkish mocha, cinnamon percolator viennese body con panna.</p>
+          <p>{this.props.comment.body}</p>
         </div>
         <div className="comment-bottom">
           <h3>Reply</h3>
-          <h3>★★★☆☆</h3>
+          <h3>{this.props.comment.voteScore}</h3>
         </div>
       </div>
     )

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comment from './Comment';
 import '../css/Post.css';
-import { getFullPost } from '../Actions'
+import { getFullPost, getPostComments } from '../Actions'
 
 
 // const date = () => {
@@ -27,6 +27,7 @@ class Post extends Component  {
 
   componentDidMount(){
     this.props.callPostDetails(this.props.id)
+    this.props.callPostComments(this.props.id)
   }
 
   render () {
@@ -44,8 +45,12 @@ class Post extends Component  {
           <h3>{this.props.post.category}</h3>
           <h3>{this.props.post.voteScore}</h3>
         </div>
-        {/* <Comment />
-        <Comment /> */}
+        {this.props.post.comments !== undefined
+          ? this.props.post.comments.map(comment =>
+          <Comment
+            key={comment.id}
+            comment={comment}/>
+        ) : null}
       </div>
     )
   }
@@ -59,7 +64,8 @@ function mapStateToProps({post}) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    callPostDetails: (id) => { dispatch(getFullPost(id)) }
+    callPostDetails: (id) => { dispatch(getFullPost(id)) },
+    callPostComments: (parentId) => { dispatch(getPostComments(parentId))}
   }
 }
 

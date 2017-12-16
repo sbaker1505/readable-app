@@ -31,3 +31,9 @@ export const fetchFullPost = (id) =>
   fetch(`${api}/posts/${id}`, { headers })
   .then(d => d.json())
   .then(data => data)
+
+// ------ COMMENTS -------
+export const fetchPostComments = (id) =>
+  fetch(`${api}/posts/${id}/comments`, { headers })
+  .then(d => d.json())
+  .then(data => data)

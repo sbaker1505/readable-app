@@ -3,7 +3,8 @@ import {
   GET_POST,
   GET_CATEGORY,
   GET_POST_FROM_CATEGORY,
-  GET_POST_DETAIL
+  GET_POST_DETAIL,
+  GET_POST_COMMENTS
  } from '../Actions'
 
 const initialState = {
@@ -25,7 +26,7 @@ function categories (state = initialState, action) {
 
 // ------ POST Reducers -------
 function post (state = initialState, action) {
-  const { post } = action
+  const { post, comment } = action
 
   switch (action.type) {
     case GET_POST :
@@ -34,6 +35,11 @@ function post (state = initialState, action) {
       return post
     case GET_POST_DETAIL :
       return post
+    case GET_POST_COMMENTS :
+      return {
+        ...state,
+        comments: comment
+      }
     default:
       return state
   }
