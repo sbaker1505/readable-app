@@ -2,26 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Comment from './Comment';
 import '../css/Post.css';
-import { getFullPost, getPostComments } from '../Actions'
-
-
-// const date = () => {
-//   let today = new Date();
-//   let dd = today.getDate();
-//   let mm = today.getMonth()+1; //January is 0!
-//   const yyyy = today.getFullYear();
-//
-//   if(dd<10) {
-//       dd = '0'+dd
-//   }
-//
-//   if(mm<10) {
-//       mm = '0'+mm
-//   }
-//
-//   return today = mm + '/' + dd + '/' + yyyy;
-// }
-
+import { getFullPost, getPostComments, deletePostById } from '../Actions'
 
 class Post extends Component  {
 
@@ -36,6 +17,10 @@ class Post extends Component  {
         <div className='post-top'>
           <h1>{this.props.post.title}</h1>
           <h4>{this.props.post.timestamp}</h4>
+          <button onClick={() => {
+            this.props.removePost(this.props.post.id)
+            this.props.path.push('/')
+          }}>(X)</button>
         </div>
         <div className="post-body">
           <p>{this.props.post.body}</p>
@@ -65,7 +50,8 @@ function mapStateToProps({post}) {
 function mapDispatchToProps(dispatch) {
   return {
     callPostDetails: (id) => { dispatch(getFullPost(id)) },
-    callPostComments: (parentId) => { dispatch(getPostComments(parentId))}
+    callPostComments: (parentId) => { dispatch(getPostComments(parentId))},
+    removePost: (id) => { dispatch(deletePostById(id))}
   }
 }
 

@@ -5,7 +5,8 @@ import {
   GET_POST_FROM_CATEGORY,
   GET_POST_DETAIL,
   GET_POST_COMMENTS,
-  CREATE_POST
+  CREATE_POST,
+  DELETE_POST
  } from '../Actions'
 
 const initialState = {
@@ -46,6 +47,8 @@ function post (state = initialState, action) {
         ...state,
         post
       }
+    case DELETE_POST :
+      return post
     default:
       return state
   }

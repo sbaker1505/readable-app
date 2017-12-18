@@ -70,6 +70,11 @@ export const createNewPost = (newPost) => dispatch => (
     .then(post => dispatch(createPost(post)))
 )
 
+export const deletePostById = (id) => dispatch => (
+  Api.fetchDeletePost(id)
+    .then(post => dispatch(deletePost(post)))
+)
+
 
 // ------ COMMENT Actions -------
 export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'

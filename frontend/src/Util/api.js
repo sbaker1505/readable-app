@@ -31,7 +31,7 @@ export const fetchFullPost = (id) =>
   .then(d => d.json())
   .then(data => data)
 
-// ------ NEW POSTS -------
+// ------ NEW POST -------
 export const fetchCreatePost = (post) =>
   fetch(`${api}/posts`, {
     method: 'POST',
@@ -42,7 +42,13 @@ export const fetchCreatePost = (post) =>
     body: JSON.stringify(post)
   })
   .then(d => d.json())
-  // .then(data => data)
+
+// ------ DELETE POST -------
+export const fetchDeletePost = (id) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers
+  })
 
 // ------ COMMENTS -------
 export const fetchPostComments = (id) =>
