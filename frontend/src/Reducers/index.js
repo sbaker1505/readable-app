@@ -44,7 +44,7 @@ function post (state = initialState, action) {
     case CREATE_POST :
       return {
         ...state,
-        post: [...state.post, post]
+        post
       }
     default:
       return state
