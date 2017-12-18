@@ -4,7 +4,8 @@ import {
   GET_CATEGORY,
   GET_POST_FROM_CATEGORY,
   GET_POST_DETAIL,
-  GET_POST_COMMENTS
+  GET_POST_COMMENTS,
+  CREATE_POST
  } from '../Actions'
 
 const initialState = {
@@ -39,6 +40,11 @@ function post (state = initialState, action) {
       return {
         ...state,
         comments: comment
+      }
+    case CREATE_POST :
+      return {
+        ...state,
+        post: [...state.post, post]
       }
     default:
       return state

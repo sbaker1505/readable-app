@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PostMin from './PostMin';
-import '../css/App.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import '../css/App.css';
+import PostMin from './PostMin';
 import { getAllPosts, getAllCategories, getAllPostsFromCategory } from '../Actions'
 
 class App extends Component {
@@ -53,7 +53,11 @@ class App extends Component {
                 <option>Time</option>
               </select>
             </li>
-            <li>Add Post</li>
+            <li>
+              <Link to='/new'>
+                Add Post
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="post-list">

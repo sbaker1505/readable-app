@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './css/index.css';
 import App from './Components/App';
 import Post from './Components/Post';
+import CreatePost from './Components/CreatePost';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -37,6 +38,12 @@ ReactDOM.render(
           exact path='/post/:id'
           render={({ match }) => (
             <Post id={match.params.id}/>
+          )}
+        />
+        <Route
+          path='/new'
+          render={({ history }) => (
+            <CreatePost path={history} />
           )}
         />
       </Switch>

@@ -8,7 +8,6 @@ if (!token)
 const headers = {
   'Accept': 'application/json',
   'Authorization': token,
-  'Content-Type': 'application/json'
 }
 // ------ CATEGORIES -------
 export const fetchCategories = () =>
@@ -31,6 +30,19 @@ export const fetchFullPost = (id) =>
   fetch(`${api}/posts/${id}`, { headers })
   .then(d => d.json())
   .then(data => data)
+
+// ------ NEW POSTS -------
+export const fetchCreatePost = (post) =>
+  fetch(`${api}/posts`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(post)
+  })
+  .then(d => d.json())
+  // .then(data => data)
 
 // ------ COMMENTS -------
 export const fetchPostComments = (id) =>
