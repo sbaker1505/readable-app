@@ -76,7 +76,7 @@ a {
   padding: 5px;
 
   background-color: white;
-  box-shadow: 0 10px 20px dimgrey;
+  box-shadow: 0 10px 20px skyblue;
 }
 
 .category-link {
@@ -85,7 +85,7 @@ a {
 
 .category-link:hover {
   background-color: dimgrey;
-  color: red;
+  color: pink;
 }
 
 .post-list {
@@ -93,17 +93,43 @@ a {
   margin: auto;
   padding-top: 10px;
 
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid black;
 }
 
+.post-min-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid black;
+}
+
+.vote-container {
+  width: 60px;
+  margin-right: 10px;
+  padding-right: 10px;
+
+  border-right: 1px solid black;
+}
+
+.vote-container h2{
+  text-align: center;
+}
+
 .post-min {
+  width: 100%;
   padding: 10px 0;
 
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
+}
 
-  border-top: 1px solid black;
+.post-min-link {
+  width: 100%;
 }
 
 .post-min h1 {

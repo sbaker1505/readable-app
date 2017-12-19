@@ -27,8 +27,8 @@ class Post extends Component  {
           <h2>-- {this.props.post.author}</h2>
         </div>
         <div className="post-bottom">
-          <h3>{this.props.post.category}</h3>
-          <h3>{this.props.post.voteScore}</h3>
+          <h3>Category: {this.props.post.category}</h3>
+          <h3>Score: {this.props.post.voteScore}</h3>
         </div>
         {this.props.post.comments !== undefined
           ? this.props.post.comments.map(comment =>
