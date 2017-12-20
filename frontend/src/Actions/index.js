@@ -22,6 +22,7 @@ export const GET_POST_FROM_CATEGORY = 'GET_POST_FROM_CATEGORY'
 export const GET_POST_DETAIL = 'GET_POST_DETAIL'
 export const CREATE_POST = 'CREATE_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const POST_VOTE = 'POST_VOTE'
 
 // ------ POSTS Action Creators -------
 export const getPost = post => ({
@@ -49,6 +50,15 @@ export const deletePost = post => ({
   post
 })
 
+export const postVote = (post, id, vote) => ({
+  type: POST_VOTE,
+  post,
+  id,
+  vote
+})
+
+
+
 // ------ POSTS Action API Dispatch -------
 export const getAllPosts = () => dispatch => (
   Api.fetchPosts()
@@ -73,6 +83,11 @@ export const createNewPost = (newPost) => dispatch => (
 export const deletePostById = (id) => dispatch => (
   Api.fetchDeletePost(id)
     .then(post => dispatch(deletePost(post)))
+)
+
+export const postVoteScore = (id, vote) => dispatch => (
+  Api.fetchVoteScore(id, vote)
+    .then(post => dispatch(postVote(post, id, vote)))
 )
 
 

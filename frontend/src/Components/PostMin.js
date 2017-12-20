@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { postVoteScore } from '../Actions'
 
-export default class PostMin extends Component {
+class PostMin extends Component {
   render() {
     return (
       <div className="post-min-container">
         <div className="vote-container">
-          <h2>Like</h2>
+          <h2 onClick={() => this.props.callPostVote(this.props.post.id, 'upVote')}>Like</h2>
           <h2>{this.props.post.voteScore}</h2>
-          <h2>Dislike</h2>
+          <h2 onClick={() => this.props.callPostVote(this.props.post.id, 'downVote')}>Dislike</h2>
         </div>
         <Link
           to={`/post/${this.props.post.id}`}
@@ -25,3 +27,11 @@ export default class PostMin extends Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    callPostVote: (id, vote) => { dispatch(postVoteScore(id, vote)) }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PostMin)

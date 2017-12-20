@@ -6,7 +6,8 @@ import {
   GET_POST_DETAIL,
   GET_POST_COMMENTS,
   CREATE_POST,
-  DELETE_POST
+  DELETE_POST,
+  POST_VOTE
  } from '../Actions'
 
 const initialState = {
@@ -28,7 +29,7 @@ function categories (state = initialState, action) {
 
 // ------ POST Reducers -------
 function post (state = initialState, action) {
-  const { post, comment } = action
+  const { post, comment, id, vote } = action
 
   switch (action.type) {
     case GET_POST :
@@ -49,6 +50,8 @@ function post (state = initialState, action) {
       }
     case DELETE_POST :
       return post
+    case POST_VOTE :
+      return state.post.filter(post => post.id === action.id)
     default:
       return state
   }

@@ -41,7 +41,7 @@ export const fetchCreatePost = (post) =>
     },
     body: JSON.stringify(post)
   })
-  .then(d => d.json())
+  .then(data => data.json())
 
 // ------ DELETE POST -------
 export const fetchDeletePost = (id) =>
@@ -49,6 +49,18 @@ export const fetchDeletePost = (id) =>
     method: 'DELETE',
     headers
   })
+
+// ------ VOTE SCORE -------
+export const fetchVoteScore = (id, option) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({option})
+  })
+  .then(data => data.json())
 
 // ------ COMMENTS -------
 export const fetchPostComments = (id) =>
