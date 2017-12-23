@@ -1,7 +1,7 @@
 .post {
   margin: auto;
-  max-width: 500px;
-
+  max-width: 700px;
+  min-width: 350px;
 
   background-color: #f1e7df;
   border: 1px solid black;
@@ -34,4 +34,32 @@
   justify-content: space-between;
 
   border-top: 1px solid black;
+}
+
+/* Menu */
+.post-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.post-menu label {
+  cursor: pointer;
+}
+
+.post-menu:hover .post-controls {
+  display: block;
+}
+
+.post-controls {
+  display: none;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  list-style-type: none;
+
+  min-width: 100%;
+  padding: 5px;
+
+  background-color: white;
+  box-shadow: 0 10px 20px skyblue;
 }

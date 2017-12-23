@@ -9,9 +9,9 @@ class PostMin extends Component {
     return (
       <div className="post-min-container">
         <div className="vote-container">
-          <h2 onClick={() => this.props.callPostVote(this.props.post.id, 'upVote')}>Like</h2>
-          <h2>{this.props.post.voteScore}</h2>
-          <h2 onClick={() => this.props.callPostVote(this.props.post.id, 'downVote')}>Dislike</h2>
+          <h2 className="control entypo-up-dir" onClick={() => this.props.callPostVote(this.props.post.id, 'upVote')}></h2>
+          <h2 className="vote">{this.props.post.voteScore}</h2>
+          <h2 className="control entypo-down-dir" onClick={() => this.props.callPostVote(this.props.post.id, 'downVote')}></h2>
         </div>
         <Link
           to={`/post/${this.props.post.id}`}

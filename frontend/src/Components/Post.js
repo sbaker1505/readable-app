@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as moment from 'moment'
 import Comment from './Comment';
 import '../css/Post.css';
 import { getFullPost, getPostComments, deletePostById } from '../Actions'
@@ -23,11 +24,19 @@ class Post extends Component  {
       <div className="post">
         <div className='post-top'>
           <h1>{this.props.post.title}</h1>
-          <h4>{this.props.post.timestamp}</h4>
-          <button onClick={() => {
-            this.props.removePost(this.props.post.id)
-            this.props.path.push('/')
-          }}>(X)</button>
+          <h4>{moment(this.props.post.timestamp).format('lll')}</h4>
+          <div className="post-menu">
+            <label className="entypo-dot-3"></label>
+            <ul className="post-controls">
+              <li
+                className="control delete-button"
+                onClick={() => {
+                this.props.removePost(this.props.post.id)
+                this.props.path.push('/')
+              }}>Delete</li>
+              <li className="control edit-button">Edit</li>
+            </ul>
+          </div>
         </div>
         <div className="post-body">
           <p>{this.props.post.body}</p>
