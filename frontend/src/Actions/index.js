@@ -18,7 +18,6 @@ export const getAllCategories = () => dispatch => (
 
 // ------ POSTS Actions -------
 export const GET_POST = 'GET_POST'
-export const GET_POST_FROM_CATEGORY = 'GET_POST_FROM_CATEGORY'
 export const GET_POST_DETAIL = 'GET_POST_DETAIL'
 export const CREATE_POST = 'CREATE_POST'
 export const DELETE_POST = 'DELETE_POST'
@@ -27,11 +26,6 @@ export const POST_VOTE = 'POST_VOTE'
 // ------ POSTS Action Creators -------
 export const getPost = post => ({
   type: GET_POST,
-  post
-})
-
-export const getPostFromCategory = post => ({
-  type: GET_POST_FROM_CATEGORY,
   post
 })
 
@@ -50,11 +44,10 @@ export const deletePost = post => ({
   post
 })
 
-export const postVote = (post, id, vote) => ({
+export const postVote = (result, id) => ({
   type: POST_VOTE,
-  post,
-  id,
-  vote
+  result,
+  id
 })
 
 
@@ -87,7 +80,7 @@ export const deletePostById = (id) => dispatch => (
 
 export const postVoteScore = (id, vote) => dispatch => (
   Api.fetchVoteScore(id, vote)
-    .then(post => dispatch(postVote(post, id, vote)))
+    .then(result => dispatch(postVote(result, id)))
 )
 
 

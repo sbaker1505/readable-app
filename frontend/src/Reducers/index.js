@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import {
   GET_POST,
   GET_CATEGORY,
-  GET_POST_FROM_CATEGORY,
   GET_POST_DETAIL,
   GET_POST_COMMENTS,
   CREATE_POST,
@@ -10,13 +9,8 @@ import {
   POST_VOTE
  } from '../Actions'
 
-const initialState = {
-  categories: [],
-  post: []
-}
-
 // ------ CATEGORY Reducers -------
-function categories (state = initialState, action) {
+function categories (state = {}, action) {
   const { categories } = action
 
   switch (action.type) {
@@ -28,20 +22,32 @@ function categories (state = initialState, action) {
 }
 
 // ------ POST Reducers -------
-function post (state = initialState, action) {
-  const { post, comment, id, vote } = action
+function post (state = {}, action) {
+  const { post, comment, result, id } = action
 
   switch (action.type) {
     case GET_POST :
-      return post
-    case GET_POST_FROM_CATEGORY :
-      return post
+      let tempState;
+      post.forEach(post => (
+        tempState = {
+          ...tempState,
+          [post.id]: post
+        }
+      ))
+      return tempState || null
     case GET_POST_DETAIL :
       return post
     case GET_POST_COMMENTS :
+      let tempComment;
+      comment.forEach(comment => (
+        tempComment = {
+          ...tempComment,
+          [comment.id]: comment
+        }
+      ))
       return {
         ...state,
-        comments: comment
+        comments: tempComment || null
       }
     case CREATE_POST :
       return {
@@ -51,7 +57,13 @@ function post (state = initialState, action) {
     case DELETE_POST :
       return post
     case POST_VOTE :
-      return state.post.filter(post => post.id === action.id)
+      return {
+        ...state,
+        [id]: {
+          ...state[id],
+          voteScore: result.voteScore
+        }
+      }
     default:
       return state
   }

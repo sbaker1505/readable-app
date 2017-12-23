@@ -13,6 +13,12 @@ class App extends Component {
   }
 
   render() {
+    const postShort = this.props.post ? Object.keys(this.props.post).map(key =>
+      <PostMin
+      key={key}
+      post={this.props.post[key]}
+    />) : <p>No posts found</p>
+
     return (
       <div className="container">
         <div className="nav">
@@ -61,13 +67,7 @@ class App extends Component {
           </ul>
         </div>
         <div className="post-list">
-          {this.props.post.length > 0
-            ? this.props.post.map(post =>
-              <PostMin
-                key={post.id}
-                post={post}
-              />)
-            : <p>No posts found</p>}
+          {postShort}
         </div>
       </div>
     );

@@ -12,6 +12,12 @@ class Post extends Component  {
   }
 
   render () {
+    const commentList = this.props.post.comments ? Object.keys(this.props.post.comments).map(key =>
+      <Comment
+      key={key}
+      comment={this.props.post.comments[key]}
+    />) : null
+
     return (
       <div className="post">
         <div className='post-top'>
@@ -30,12 +36,7 @@ class Post extends Component  {
           <h3>Category: {this.props.post.category}</h3>
           <h3>Score: {this.props.post.voteScore}</h3>
         </div>
-        {this.props.post.comments !== undefined
-          ? this.props.post.comments.map(comment =>
-          <Comment
-            key={comment.id}
-            comment={comment}/>
-        ) : null}
+        {commentList}
       </div>
     )
   }
