@@ -14,8 +14,7 @@ export default class Comment extends Component {
           <p>{this.props.comment.body}</p>
         </div>
         <div className="comment-bottom">
-          <h3>Reply</h3>
-          <h3>{this.props.comment.voteScore}</h3>
+          <h3>Vote Score: {this.props.comment.voteScore}</h3>
         </div>
       </div>
     )

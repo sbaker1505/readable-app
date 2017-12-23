@@ -86,6 +86,8 @@ export const postVoteScore = (id, vote) => dispatch => (
 
 // ------ COMMENT Actions -------
 export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
+export const CREATE_COMMENT = 'CREATE_COMMENT'
+
 
 // ------ COMMENT Action Creators -------
 export const getComment = comment => ({
@@ -93,8 +95,19 @@ export const getComment = comment => ({
   comment
 })
 
+export const createComment = (parentId, comment) => ({
+  type: CREATE_COMMENT,
+  parentId,
+  comment
+})
+
 // ------ COMMENT Action API Dispatch -------
 export const getPostComments = (parentId) => dispatch => (
   Api.fetchPostComments(parentId)
     .then(comment => dispatch(getComment(comment)))
+)
+
+export const createNewComment = (parentId, newComment) => dispatch => (
+  Api.fetchCreateComment(newComment)
+    .then(comment => dispatch(createComment(parentId, comment)))
 )

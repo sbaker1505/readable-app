@@ -5,6 +5,7 @@ import {
   GET_POST_DETAIL,
   GET_POST_COMMENTS,
   CREATE_POST,
+  CREATE_COMMENT,
   DELETE_POST,
   POST_VOTE
  } from '../Actions'
@@ -53,6 +54,11 @@ function post (state = {}, action) {
       return {
         ...state,
         post
+      }
+    case CREATE_COMMENT :
+      return {
+        ...state,
+        comment
       }
     case DELETE_POST :
       return post

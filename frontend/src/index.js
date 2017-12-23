@@ -5,6 +5,7 @@ import './css/index.css';
 import App from './Components/App';
 import Post from './Components/Post';
 import CreatePost from './Components/CreatePost';
+import CreateComment from './Components/CreateComment';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -41,9 +42,15 @@ ReactDOM.render(
           )}
         />
         <Route
-          path='/new'
+          exact path='/new'
           render={({ history }) => (
             <CreatePost path={history} />
+          )}
+        />
+        <Route
+          exact path='/post/:id/comment/new'
+          render={({match, history }) => (
+            <CreateComment parentId={match.params.id} path={history} />
           )}
         />
       </Switch>

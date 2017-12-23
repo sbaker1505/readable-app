@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import '../css/Post.css';
 import { getFullPost, getPostComments, deletePostById } from '../Actions'
@@ -33,6 +34,12 @@ class Post extends Component  {
           <h2>-- {this.props.post.author}</h2>
         </div>
         <div className="post-bottom">
+          <h3>
+            <Link
+              to={`/post/${this.props.post.id}/comment/new`}>
+              + Comment
+            </Link>
+          </h3>
           <h3>Category: {this.props.post.category}</h3>
           <h3>Score: {this.props.post.voteScore}</h3>
         </div>
