@@ -36,6 +36,28 @@ function post (state = {}, action) {
         }
       ))
       return tempState || null
+    case CREATE_POST :
+      return {
+        ...state,
+        post
+      }
+    case POST_VOTE :
+      return {
+        ...state,
+        [id]: {
+          ...state[id],
+          voteScore: result.voteScore
+        }
+      }
+    default:
+      return state
+  }
+}
+
+// ------ CURRENT POST Reducers -------
+function currentPost(state = {}, action) {
+  const { post, comment, result, id } = action
+  switch (action.type) {
     case GET_POST_DETAIL :
       return post
     case GET_POST_COMMENTS :
@@ -50,11 +72,6 @@ function post (state = {}, action) {
         ...state,
         comments: tempComment || null
       }
-    case CREATE_POST :
-      return {
-        ...state,
-        post
-      }
     case CREATE_COMMENT :
       return {
         ...state,
@@ -62,20 +79,13 @@ function post (state = {}, action) {
       }
     case DELETE_POST :
       return post
-    case POST_VOTE :
-      return {
-        ...state,
-        [id]: {
-          ...state[id],
-          voteScore: result.voteScore
-        }
-      }
-    default:
+    default :
       return state
   }
 }
 
 export default combineReducers({
   categories,
-  post
+  post,
+  currentPost
 });

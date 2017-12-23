@@ -29,9 +29,10 @@ export const getPost = post => ({
   post
 })
 
-export const getPostDetails = (post) => ({
+export const getPostDetails = (post, id) => ({
   type: GET_POST_DETAIL,
-  post
+  post,
+  id
 })
 
 export const createPost = post => ({
@@ -65,7 +66,7 @@ export const getAllPostsFromCategory = (category) => dispatch => (
 
 export const getFullPost = (id) => dispatch => (
   Api.fetchFullPost(id)
-    .then((post) => dispatch(getPostDetails(post)))
+    .then((post) => dispatch(getPostDetails(post, id)))
 )
 
 export const createNewPost = (newPost) => dispatch => (

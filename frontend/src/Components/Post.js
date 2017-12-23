@@ -49,9 +49,9 @@ class Post extends Component  {
   }
 }
 
-function mapStateToProps({post}) {
+function mapStateToProps({currentPost}) {
   return {
-    post
+    post: currentPost
   }
 }
 

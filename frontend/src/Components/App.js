@@ -55,8 +55,8 @@ class App extends Component {
               <label>Sort By </label>
               <select>
                 <option>Title</option>
+                <option>Votes</option>
                 <option>Date</option>
-                <option>Time</option>
               </select>
             </li>
             <li>

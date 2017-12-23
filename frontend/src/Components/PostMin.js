@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { postVoteScore } from '../Actions'
+import * as moment from 'moment'
 
 class PostMin extends Component {
   render() {
@@ -18,7 +19,7 @@ class PostMin extends Component {
           <div className="post-min">
             <h1>{this.props.post.title}</h1>
             <div className="post-info">
-              <h2>{this.props.post.timestamp}</h2>
+              <h2>{moment(this.props.post.timestamp).format('lll')}</h2>
               <h2>by {this.props.post.author}</h2>
             </div>
           </div>
