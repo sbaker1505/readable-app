@@ -12,23 +12,23 @@ const headers = {
 // ------ CATEGORIES -------
 export const fetchCategories = () =>
   fetch(`${api}/categories`, { headers })
-  .then(d => d.json())
+  .then(data => data.json())
   .then(data => data)
 
 // ------ POSTS -------
 export const fetchPosts = () =>
   fetch(`${api}/posts`, { headers })
-  .then(d => d.json())
+  .then(data => data.json())
   .then(data => data)
 
 export const fetchPostFromCategory = (category) =>
   fetch(`${api}/${category}/posts`, { headers })
-  .then(d => d.json())
+  .then(data => data.json())
   .then(data => data)
 
 export const fetchFullPost = (id) =>
   fetch(`${api}/posts/${id}`, { headers })
-  .then(d => d.json())
+  .then(data => data.json())
   .then(data => data)
 
 // ------ NEW POST -------
@@ -62,10 +62,26 @@ export const fetchVoteScore = (id, option) =>
   })
   .then(data => data.json())
 
+export const fetchVoteScoreComment = (id, option) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({option})
+  })
+  .then(data => data.json())
+
 // ------ COMMENTS -------
 export const fetchPostComments = (id) =>
   fetch(`${api}/posts/${id}/comments`, { headers })
-  .then(d => d.json())
+  .then(data => data.json())
+  .then(data => data)
+
+export const fetchFullComment = (id) =>
+  fetch(`${api}/comments/${id}`, { headers })
+  .then(data => data.json())
   .then(data => data)
 
 // ------ NEW COMMENT -------

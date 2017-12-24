@@ -4,10 +4,12 @@ import {
   GET_CATEGORY,
   GET_POST_DETAIL,
   GET_POST_COMMENTS,
+  GET_COMMENT_DETAIL,
   CREATE_POST,
   CREATE_COMMENT,
   DELETE_POST,
-  POST_VOTE
+  POST_VOTE,
+  COMMENT_VOTE
  } from '../Actions'
 
 // ------ CATEGORY Reducers -------
@@ -56,7 +58,7 @@ function post (state = {}, action) {
 
 // ------ CURRENT POST Reducers -------
 function currentPost(state = {}, action) {
-  const { post, comment } = action
+  const { post, comment, result, id } = action
   switch (action.type) {
     case GET_POST_DETAIL :
       return post
@@ -79,6 +81,28 @@ function currentPost(state = {}, action) {
       }
     case DELETE_POST :
       return post
+    case COMMENT_VOTE :
+      return {
+        ...state,
+        comments: {
+          ...state.comments,
+          [id]: {
+            ...state.comments[id],
+            voteScore: result.voteScore
+          }
+        }
+      }
+    default :
+      return state
+  }
+}
+
+// ------ CURRENT POST Reducers -------
+function currentComment (state = {}, action) {
+  const { comment } = action
+  switch (action.type) {
+    case GET_COMMENT_DETAIL :
+      return comment
     default :
       return state
   }
@@ -87,5 +111,6 @@ function currentPost(state = {}, action) {
 export default combineReducers({
   categories,
   post,
-  currentPost
+  currentPost,
+  currentComment
 });

@@ -87,13 +87,20 @@ export const postVoteScore = (id, vote) => dispatch => (
 
 // ------ COMMENT Actions -------
 export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
+export const GET_COMMENT_DETAIL = 'GET_COMMENT_DETAIL'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
-
+export const COMMENT_VOTE = 'COMMENT_VOTE'
 
 // ------ COMMENT Action Creators -------
 export const getComment = comment => ({
   type: GET_POST_COMMENTS,
   comment
+})
+
+export const getCommentDetails = (comment, id) => ({
+  type: GET_COMMENT_DETAIL,
+  comment,
+  id
 })
 
 export const createComment = (parentId, comment) => ({
@@ -102,13 +109,29 @@ export const createComment = (parentId, comment) => ({
   comment
 })
 
+export const postVoteComment = (result, id) => ({
+  type: COMMENT_VOTE,
+  result,
+  id
+})
+
 // ------ COMMENT Action API Dispatch -------
 export const getPostComments = (parentId) => dispatch => (
   Api.fetchPostComments(parentId)
     .then(comment => dispatch(getComment(comment)))
 )
 
+export const getFullComment = (id) => dispatch => (
+  Api.fetchFullComment(id)
+    .then((comment) => dispatch(getCommentDetails(comment, id)))
+)
+
 export const createNewComment = (parentId, newComment) => dispatch => (
   Api.fetchCreateComment(newComment)
     .then(comment => dispatch(createComment(parentId, comment)))
+)
+
+export const postVoteScoreComment = (id, vote) => dispatch => (
+  Api.fetchVoteScoreComment(id, vote)
+    .then(result => dispatch(postVoteComment(result, id)))
 )

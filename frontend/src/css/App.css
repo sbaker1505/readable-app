@@ -3,17 +3,17 @@
 /* icon font import */
 @import url('http://weloveiconfonts.com/api/?family=entypo');
 
-/* entypo */
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-  font-size: 24px;
-}
-
 * {
   font-size: 16px;
 
   margin: 0;
   padding: 0;
+}
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+  font-size: 24px;
 }
 
 h1, p {
@@ -151,7 +151,6 @@ label {
 .vote {
   line-height: 14px;
 }
-
 
 .post-min {
   width: 100%;
