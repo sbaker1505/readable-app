@@ -24,7 +24,7 @@ function categories (state = {}, action) {
 
 // ------ POST Reducers -------
 function post (state = {}, action) {
-  const { post, comment, result, id } = action
+  const { post, result, id } = action
 
   switch (action.type) {
     case GET_POST :
@@ -56,7 +56,7 @@ function post (state = {}, action) {
 
 // ------ CURRENT POST Reducers -------
 function currentPost(state = {}, action) {
-  const { post, comment, result, id } = action
+  const { post, comment } = action
   switch (action.type) {
     case GET_POST_DETAIL :
       return post

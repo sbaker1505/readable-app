@@ -149,7 +149,7 @@ label {
 }
 
 .vote {
-  line-height: 12px;
+  line-height: 14px;
 }
 
 
@@ -177,4 +177,8 @@ label {
 
 .post-info h2 {
   font-weight: 100;
+}
+
+.vote-arrow {
+  text-align: center;
 }
