@@ -95,3 +95,10 @@ export const fetchCreateComment = (comment) =>
     body: JSON.stringify(comment)
   })
   .then(data => data.json())
+
+// ------ DELETE COMMENT -------
+export const fetchDeleteComment = (id) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'DELETE',
+    headers
+  })

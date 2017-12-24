@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as moment from 'moment'
 import '../css/Comment.css';
-import { getFullComment, postVoteScoreComment } from '../Actions'
+import { getFullComment, postVoteScoreComment, deleteCommentById } from '../Actions'
 
 class Comment extends Component {
   commentInfoEvent = () => {
     this.props.callCommentDetails(this.props.comment.id)
     this.setState(this.props.info)
   }
-
+  
   render () {
     return (
       <div className="comment">
@@ -26,7 +26,12 @@ class Comment extends Component {
               onClick={this.commentInfoEvent}
               className="control comment-info-link entypo-info"></div>
             <div className="control comment-info-link entypo-pencil"></div>
-            <div className="control comment-info-link entypo-trash"></div>
+            <div
+              className="control comment-info-link entypo-trash"
+              onClick={() => {
+              this.props.removeComment(this.props.comment.id)
+            }}
+            />
           </div>
         </div>
         {this.state
@@ -53,7 +58,8 @@ function mapStateToProps({currentComment}) {
 function mapDispatchToProps(dispatch) {
   return {
     callCommentDetails: (id) => { dispatch(getFullComment(id)) },
-    callPostVote: (id, vote) => { dispatch(postVoteScoreComment(id, vote)) }
+    callPostVote: (id, vote) => { dispatch(postVoteScoreComment(id, vote)) },
+    removeComment: (id) => { dispatch(deleteCommentById(id))}
   }
 }
 

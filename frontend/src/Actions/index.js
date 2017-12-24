@@ -89,6 +89,7 @@ export const postVoteScore = (id, vote) => dispatch => (
 export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
 export const GET_COMMENT_DETAIL = 'GET_COMMENT_DETAIL'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
+export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const COMMENT_VOTE = 'COMMENT_VOTE'
 
 // ------ COMMENT Action Creators -------
@@ -107,6 +108,12 @@ export const createComment = (parentId, comment) => ({
   type: CREATE_COMMENT,
   parentId,
   comment
+})
+
+export const deleteComment = (comment, id) => ({
+  type: DELETE_COMMENT,
+  comment,
+  id
 })
 
 export const postVoteComment = (result, id) => ({
@@ -129,6 +136,11 @@ export const getFullComment = (id) => dispatch => (
 export const createNewComment = (parentId, newComment) => dispatch => (
   Api.fetchCreateComment(newComment)
     .then(comment => dispatch(createComment(parentId, comment)))
+)
+
+export const deleteCommentById = (id) => dispatch => (
+  Api.fetchDeleteComment(id)
+    .then(comment => dispatch(deleteComment(comment, id)))
 )
 
 export const postVoteScoreComment = (id, vote) => dispatch => (

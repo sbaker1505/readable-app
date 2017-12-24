@@ -8,6 +8,7 @@ import {
   CREATE_POST,
   CREATE_COMMENT,
   DELETE_POST,
+  DELETE_COMMENT,
   POST_VOTE,
   COMMENT_VOTE
  } from '../Actions'
@@ -90,6 +91,14 @@ function currentPost(state = {}, action) {
             ...state.comments[id],
             voteScore: result.voteScore
           }
+        }
+      }
+    case DELETE_COMMENT :
+      return {
+        ...state,
+        comments: {
+          ...state.comments,
+          [id]: null
         }
       }
     default :

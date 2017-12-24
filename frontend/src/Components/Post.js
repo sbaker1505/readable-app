@@ -14,11 +14,15 @@ class Post extends Component  {
   }
 
   render () {
-    const commentList = this.props.post.comments ? Object.keys(this.props.post.comments).map(key =>
-      <Comment
-      key={key}
-      comment={this.props.post.comments[key]}
-    />) : null
+    const commentList = this.props.post.comments
+    ? Object.keys(this.props.post.comments)
+            .filter(key => this.props.post.comments[key] !== null)
+            .map(key =>
+              <Comment
+              key={key}
+              comment={this.props.post.comments[key]}
+            />)
+    : null
 
     return (
       <div className="post">
