@@ -17,17 +17,19 @@ class App extends Component {
       <PostMin
       key={key}
       post={this.props.post[key]}
-    />) : <p>No posts found</p>
+    />) : <p className="no-post">No posts found</p>
 
     return (
       <div className="container">
         <div className="nav">
           <h1 className="header">Readable Forum</h1>
           <ul className="controls">
-            <li className="category-menu">
-              <label>Category </label>
-              <ul className="categories">
-                <li className='category-link'>
+            <li className="dropdown-menu">
+              {this.props.category
+                ? <label>Category: {this.props.category}</label>
+                : <label>Category</label>}
+              <ul className="dropdown-list categories">
+                <li className='dropdown-link'>
                   <Link
                     to='/'
                     onClick={() => (
@@ -38,7 +40,7 @@ class App extends Component {
                 </li>
                 {this.props.categories.length > 0
                   ? this.props.categories.map(category =>
-                    <li key={category.path} className='category-link'>
+                    <li key={category.path} className='dropdown-link'>
                       <Link
                         to={`/category/${category.path}`}
                         onClick={() => (
@@ -51,22 +53,21 @@ class App extends Component {
                 }
               </ul>
             </li>
-            <li>
-              <label>Sort By </label>
-              <select>
-                <option>Title</option>
-                <option>Votes</option>
-                <option>Date</option>
-              </select>
-            </li>
-            <li>
-              <Link to='/new'>
-                Add Post
-              </Link>
+            <li className="dropdown-menu">
+              <label>Sort By</label>
+              <ul className="dropdown-list sort-by">
+                <li className='dropdown-link'>Title</li>
+                <li className='dropdown-link'>Votes</li>
+                <li className='dropdown-link'>Date</li>
+              </ul>
             </li>
           </ul>
         </div>
         <div className="post-list">
+          <div className="add-post">
+            <Link to='/new'
+              className="entypo-plus"/>
+          </div>
           {postShort}
         </div>
       </div>

@@ -43,8 +43,17 @@ a {
   color: inherit;
 }
 
+label {
+  text-transform: capitalize;
+}
+
 .control {
   cursor: pointer;
+}
+
+.no-post {
+  padding: 10px 0;
+  border-top: 1px solid black;
 }
 
 .nav {
@@ -70,16 +79,16 @@ a {
   list-style: none;
 }
 
-.category-menu {
+.dropdown-menu {
   position: relative;
   display: inline-block;
 }
 
-.category-menu:hover .categories {
+.dropdown-menu:hover .dropdown-list {
   display: block;
 }
 
-.categories {
+.categories, .sort-by {
   display: none;
   position: absolute;
   z-index: 1;
@@ -89,14 +98,14 @@ a {
   padding: 5px;
 
   background-color: white;
-  box-shadow: 0 10px 20px skyblue;
+  box-shadow: 0 2px 4px wheat;
 }
 
-.category-link {
+.dropdown-link {
   text-transform: capitalize;
 }
 
-.category-link:hover {
+.dropdown-link:hover {
   background-color: dimgrey;
   color: pink;
 }
@@ -109,6 +118,12 @@ a {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid black;
+}
+
+.add-post {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .post-min-container {
