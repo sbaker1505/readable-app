@@ -110,9 +110,8 @@ export const createComment = (parentId, comment) => ({
   comment
 })
 
-export const deleteComment = (comment, id) => ({
+export const deleteComment = (id) => ({
   type: DELETE_COMMENT,
-  comment,
   id
 })
 
@@ -140,7 +139,7 @@ export const createNewComment = (parentId, newComment) => dispatch => (
 
 export const deleteCommentById = (id) => dispatch => (
   Api.fetchDeleteComment(id)
-    .then(comment => dispatch(deleteComment(comment, id)))
+    .then(() => dispatch(deleteComment(id)))
 )
 
 export const postVoteScoreComment = (id, vote) => dispatch => (

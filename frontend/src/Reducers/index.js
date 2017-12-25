@@ -81,7 +81,7 @@ function currentPost(state = {}, action) {
         comment
       }
     case DELETE_POST :
-      return post
+      return null
     case COMMENT_VOTE :
       return {
         ...state,
