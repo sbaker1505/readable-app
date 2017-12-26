@@ -3,22 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../css/App.css';
 import PostMin from './PostMin';
-import { getAllPosts, getAllCategories, getAllPostsFromCategory } from '../Actions'
+import { getAllPosts, getAllCategories, getAllPostsFromCategory, sortPostOption } from '../Actions'
 
 class App extends Component {
-
   componentDidMount(){
     this.props.callAllCategories()
     this.props.callAllPosts()
   }
 
   render() {
-    const postShort = this.props.post ? Object.keys(this.props.post).map(key =>
-      <PostMin
-      key={key}
-      post={this.props.post[key]}
-    />) : <p className="no-post">No posts found</p>
-
     return (
       <div className="container">
         <div className="nav">
@@ -26,8 +19,8 @@ class App extends Component {
           <ul className="controls">
             <li className="dropdown-menu">
               {this.props.category
-                ? <label>Category: {this.props.category}</label>
-                : <label>Category</label>}
+                ? <label className="control">Category: {this.props.category}</label>
+                : <label className="control">Category</label>}
               <ul className="dropdown-list categories">
                 <li className='dropdown-link'>
                   <Link
@@ -54,11 +47,30 @@ class App extends Component {
               </ul>
             </li>
             <li className="dropdown-menu">
-              <label>Sort By</label>
+              <label className="control">Sort By</label>
               <ul className="dropdown-list sort-by">
-                <li className='dropdown-link'>Title</li>
-                <li className='dropdown-link'>Votes</li>
-                <li className='dropdown-link'>Date</li>
+                <li
+                  onClick={(event) => {
+                    this.props.onSortPost('highVote', this.props.category)
+                    this.setState({sort: event.target.name})
+                  }}
+                  name="Best Rated"
+                  className='control dropdown-link'>Best Rated</li>
+                <li
+                  onClick={() => this.props.onSortPost('lowVote', this.props.category)}
+                  className='control dropdown-link'>Lowest Rated</li>
+                <li
+                  onClick={() => this.props.onSortPost('recent', this.props.category)}
+                  className='control dropdown-link'>Most Recent</li>
+                <li
+                  onClick={() => this.props.onSortPost('oldest', this.props.category)}
+                  className='control dropdown-link'>Oldest</li>
+                <li
+                  onClick={() => this.props.onSortPost('authorAZ', this.props.category)}
+                  className='control dropdown-link'>Author A-Z</li>
+                <li
+                  onClick={() => this.props.onSortPost('titleAZ', this.props.category)}
+                  className='control dropdown-link'>Title A-Z</li>
               </ul>
             </li>
           </ul>
@@ -68,7 +80,14 @@ class App extends Component {
             <Link to='/new'
               className="entypo-plus"/>
           </div>
-          {postShort}
+          {this.props.post
+            ? Object.keys(this.props.post)
+                    .map(key =>
+                      <PostMin
+                        key={key}
+                        post={this.props.post[key]}
+                      />)
+            : <p className="no-post">No posts found</p>}
         </div>
       </div>
     );
@@ -86,7 +105,8 @@ function mapDispatchToProps(dispatch) {
   return {
     callAllCategories: () => { dispatch(getAllCategories()) },
     callAllPosts: () => { dispatch(getAllPosts()) },
-    callAllPostsFromCategory: (category) => { dispatch(getAllPostsFromCategory(category)) }
+    callAllPostsFromCategory: (category) => { dispatch(getAllPostsFromCategory(category)) },
+    onSortPost: (option, category) => { dispatch(sortPostOption(option, category)) }
   }
 }
 

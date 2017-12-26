@@ -167,3 +167,18 @@ export const postVoteScoreComment = (id, vote) => dispatch => (
   Api.fetchVoteScoreComment(id, vote)
     .then(result => dispatch(postVoteComment(result, id)))
 )
+
+// ------ SORTING Actions -------
+export const SORT_POST = 'SORT_POST'
+
+// ------ SORTING Action Creators -------
+export const sortPost = (post, option) => ({
+  type: SORT_POST,
+  post,
+  option
+})
+
+export const sortPostOption = (option, category) => dispatch => {
+  const apiRequest = category ? Api.fetchPostFromCategory(category) : Api.fetchPosts()
+  apiRequest.then(post => dispatch(sortPost(post, option)))
+}
