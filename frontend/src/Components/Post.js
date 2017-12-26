@@ -32,13 +32,15 @@ class Post extends Component  {
           <div className="post-menu">
             <label className="entypo-dot-3"></label>
             <ul className="post-controls">
+              <li className="control dropdown-link"
+                onClick={() => this.props.path.push('/')}>Close</li>
               <li
-                className="control delete-button"
+                className="control dropdown-link delete-button"
                 onClick={() => {
                 this.props.removePost(this.props.post.id)
                 this.props.path.push('/')
               }}>Delete</li>
-              <li className="control edit-button">
+              <li className="control dropdown-link edit-button">
                 <Link
                   to={`/post/${this.props.post.id}/edit`}>
                     Edit

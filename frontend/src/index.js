@@ -33,8 +33,8 @@ ReactDOM.render(
         />
         <Route
           exact path='/category/:category'
-          render={({ match }) => (
-            <App category={match.params.category}/>
+          render={({ match, history }) => (
+            <App category={match.params.category} path={history}/>
           )}
         />
         <Route

@@ -3,20 +3,30 @@
 .comment {
   width: calc(100% - 20px);
   margin: 10px auto;
+  padding: 10px 0;
 
   background-color: white;
   border-radius: 5px;
+  box-shadow: 0 2px 2px grey;
 }
 
 .comment-top {
+  display: flex;
+  padding: 0 10px;
+}
+
+.comment-top-info {
   width: calc(100% - 20px);
   margin: auto;
-  padding: 10px 0;
 
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 
+}
+
+.vote-container {
+  padding: 0 10px;
 }
 
 .vote-linear {
@@ -39,12 +49,9 @@
 }
 
 .comment-body {
-  width: calc(100% - 60px);
+  width: 100%;
   margin: auto;
-  padding-left: 10px;
-
-  border-left: 2px solid #c09f80;
-
+  padding: 10px 0 0 10px;;
 }
 
 .comment-bottom {

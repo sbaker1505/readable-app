@@ -15,7 +15,12 @@ class App extends Component {
     return (
       <div className="container">
         <div className="nav">
-          <h1 className="header">Readable Forum</h1>
+          <h1
+            onClick={() => {
+              this.props.callAllPosts()
+              this.props.path ? this.props.path.push('/') : null
+            }}
+            className="control header">Readable Forum</h1>
           <ul className="controls">
             <li className="dropdown-menu">
               {this.props.category
@@ -50,11 +55,7 @@ class App extends Component {
               <label className="control">Sort By</label>
               <ul className="dropdown-list sort-by">
                 <li
-                  onClick={(event) => {
-                    this.props.onSortPost('highVote', this.props.category)
-                    this.setState({sort: event.target.name})
-                  }}
-                  name="Best Rated"
+                  onClick={() => this.props.onSortPost('highVote', this.props.category)}
                   className='control dropdown-link'>Best Rated</li>
                 <li
                   onClick={() => this.props.onSortPost('lowVote', this.props.category)}

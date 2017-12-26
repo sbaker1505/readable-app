@@ -94,11 +94,16 @@ label {
   z-index: 1;
   list-style-type: none;
 
-  min-width: 100%;
+  min-width: 60px;
   padding: 5px;
 
   background-color: white;
   box-shadow: 0 2px 4px wheat;
+}
+
+.sort-by {
+  right: 0;
+  min-width: 100px;
 }
 
 .dropdown-link {
@@ -106,8 +111,8 @@ label {
 }
 
 .dropdown-link:hover {
-  background-color: dimgrey;
-  color: pink;
+  background-color: ivory;
+  color: red;
 }
 
 .post-list {
@@ -180,4 +185,38 @@ label {
 
 .vote-arrow {
   text-align: center;
+}
+
+/* form */
+.form {
+  margin: auto;
+  padding: 10px;
+  max-width: 500px;
+  background-color: ivory;
+  border: 1px solid black;
+
+}
+
+.form input, select {
+  margin: 10px 0;
+  width: 100%;
+  display: block;
+  background-color: inherit;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.form select, .form button {
+  width: 100px;
+  border: 1px solid black;
+}
+
+.form-body {
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+  background-color: inherit;
+  border: 1px solid black;
+  box-sizing: border-box;
 }

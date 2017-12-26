@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllCategories, getFullPost, editPostById } from '../Actions'
-
+import '../css/App.css';
 
 class EditPost extends Component {
   state = {
@@ -28,7 +28,7 @@ class EditPost extends Component {
 
   render(){
     return (
-      <div className="create-post">
+      <div className="form edit-post">
         {this.props.post.id === this.props.id
           ? <form onSubmit={this.handleSubmit}>
               <div>
@@ -49,7 +49,8 @@ class EditPost extends Component {
                   value={this.props.post.author}
                   readOnly
                 />
-                <input
+                <textarea
+                  className='form-body'
                   type="text"
                   name="body"
                   placeholder="Post content"

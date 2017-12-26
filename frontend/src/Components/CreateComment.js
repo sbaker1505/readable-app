@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import serializeForm from 'form-serialize'
 import { createNewComment } from '../Actions'
-
+import '../css/App.css';
 
 class CreateComment extends Component {
 
@@ -31,11 +31,11 @@ class CreateComment extends Component {
     }
 
     return (
-      <div className="create-comment">
+      <div className="form create-comment">
         <form onSubmit={this.handleSubmit}>
           <div>
             <input type="text" name="author" placeholder="Name"/>
-            <input type="text" name="body" placeholder="Comment here"/>
+            <textarea className='form-body' type="text" name="body" placeholder="Comment here"/>
             <button>Comment</button>
           </div>
         </form>

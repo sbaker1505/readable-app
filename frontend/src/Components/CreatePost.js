@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import serializeForm from 'form-serialize'
 import { getAllCategories, createNewPost } from '../Actions'
+import '../css/App.css';
 
 
 class CreatePost extends Component {
@@ -37,12 +37,12 @@ class CreatePost extends Component {
     }
 
     return (
-      <div className="create-post">
+      <div className="form create-post">
         <form onSubmit={this.handleSubmit}>
           <div>
             <input type="text" name="title" placeholder="Title"/>
             <input type="text" name="author" placeholder="Name"/>
-            <input type="text" name="body" placeholder="Post content"/>
+            <textarea className='form-body' type="text" name="body" placeholder="Post content"/>
             <select name="category">
               {this.props.categories.length > 0
                 ? this.props.categories.map(category =>

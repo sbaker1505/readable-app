@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getFullComment, editCommentById } from '../Actions'
-
+import '../css/App.css';
 
 class EditComment extends Component {
   state = {
@@ -26,7 +26,7 @@ class EditComment extends Component {
 
   render(){
     return (
-      <div className="create-comment">
+      <div className="form edit-comment">
         {this.props.comment.id === this.props.id
           ? <form onSubmit={this.handleSubmit}>
               <div>
@@ -37,7 +37,8 @@ class EditComment extends Component {
                   value={this.props.comment.author}
                   readOnly
                 />
-                <input
+                <textarea
+                  className='form-body'
                   type="text"
                   name="body"
                   placeholder="Comment here"

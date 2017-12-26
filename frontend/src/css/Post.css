@@ -3,8 +3,9 @@
   max-width: 700px;
   min-width: 350px;
 
-  background-color: #f1e7df;
+  background-color: ivory;
   border: 1px solid black;
+  box-shadow: 0 5px 5px grey;
 }
 
 .post-top {
@@ -61,5 +62,5 @@
   padding: 5px;
 
   background-color: white;
-  box-shadow: 0 10px 20px skyblue;
+  box-shadow: 0 10px 20px grey;
 }
