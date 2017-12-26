@@ -19,9 +19,9 @@ class Post extends Component  {
             .filter(key => this.props.post.comments[key] !== null)
             .map(key =>
               <Comment
-              key={key}
-              comment={this.props.post.comments[key]}
-            />)
+                key={key}
+                comment={this.props.post.comments[key]}
+              />)
     : null
 
     return (
@@ -42,7 +42,7 @@ class Post extends Component  {
                 <Link
                   to={`/post/${this.props.post.id}/edit`}>
                     Edit
-                  </Link>
+                </Link>
               </li>
             </ul>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as moment from 'moment'
 import '../css/Comment.css';
 import { getFullComment, postVoteScoreComment, deleteCommentById } from '../Actions'
@@ -9,7 +10,7 @@ class Comment extends Component {
     this.props.callCommentDetails(this.props.comment.id)
     this.setState(this.props.info)
   }
-  
+
   render () {
     return (
       <div className="comment">
@@ -24,14 +25,15 @@ class Comment extends Component {
           <div className="comment-icons">
             <div
               onClick={this.commentInfoEvent}
-              className="control comment-info-link entypo-info"></div>
-            <div className="control comment-info-link entypo-pencil"></div>
+              className="control comment-info-link entypo-info"/>
+            <Link to={`/post/${this.props.comment.parentId}/comment/${this.props.comment.id}/edit`}>
+              <div className="control comment-info-link entypo-pencil"/>
+            </Link>
             <div
               className="control comment-info-link entypo-trash"
               onClick={() => {
               this.props.removeComment(this.props.comment.id)
-            }}
-            />
+              }}/>
           </div>
         </div>
         {this.state

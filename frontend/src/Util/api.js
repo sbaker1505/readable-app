@@ -109,6 +109,19 @@ export const fetchCreateComment = (comment) =>
   })
   .then(data => data.json())
 
+
+// ------ EDIT COMMENT -------
+export const fetchEditComment = (id, comment) =>
+  fetch(`${api}/comments/${id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(comment)
+  })
+  .then(data => data.json())
+
 // ------ DELETE COMMENT -------
 export const fetchDeleteComment = (id) =>
   fetch(`${api}/comments/${id}`, {

@@ -99,6 +99,7 @@ export const GET_POST_COMMENTS = 'GET_POST_COMMENTS'
 export const GET_COMMENT_DETAIL = 'GET_COMMENT_DETAIL'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const COMMENT_VOTE = 'COMMENT_VOTE'
 
 // ------ COMMENT Action Creators -------
@@ -116,6 +117,12 @@ export const getCommentDetails = (comment, id) => ({
 export const createComment = (parentId, comment) => ({
   type: CREATE_COMMENT,
   parentId,
+  comment
+})
+
+export const editComment = (id, comment) => ({
+  type: EDIT_COMMENT,
+  id,
   comment
 })
 
@@ -144,6 +151,11 @@ export const getFullComment = (id) => dispatch => (
 export const createNewComment = (parentId, newComment) => dispatch => (
   Api.fetchCreateComment(newComment)
     .then(comment => dispatch(createComment(parentId, comment)))
+)
+
+export const editCommentById = (id, comment) => dispatch => (
+  Api.fetchEditComment(id, comment)
+    .then(comment => dispatch(editComment(id, comment)))
 )
 
 export const deleteCommentById = (id) => dispatch => (
