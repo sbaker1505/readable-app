@@ -7,6 +7,7 @@ import {
   GET_COMMENT_DETAIL,
   CREATE_POST,
   CREATE_COMMENT,
+  EDIT_POST,
   DELETE_POST,
   DELETE_COMMENT,
   POST_VOTE,
@@ -82,6 +83,8 @@ function currentPost(state = {}, action) {
       }
     case DELETE_POST :
       return null
+    case EDIT_POST :
+      return post
     case COMMENT_VOTE :
       return {
         ...state,

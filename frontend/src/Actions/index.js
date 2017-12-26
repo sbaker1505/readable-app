@@ -21,6 +21,7 @@ export const GET_POST = 'GET_POST'
 export const GET_POST_DETAIL = 'GET_POST_DETAIL'
 export const CREATE_POST = 'CREATE_POST'
 export const DELETE_POST = 'DELETE_POST'
+export const EDIT_POST = 'EDIT_POST'
 export const POST_VOTE = 'POST_VOTE'
 
 // ------ POSTS Action Creators -------
@@ -40,6 +41,11 @@ export const createPost = post => ({
   post
 })
 
+export const editPost = post => ({
+  type: EDIT_POST,
+  post
+})
+
 export const deletePost = post => ({
   type: DELETE_POST,
   post
@@ -50,8 +56,6 @@ export const postVote = (result, id) => ({
   result,
   id
 })
-
-
 
 // ------ POSTS Action API Dispatch -------
 export const getAllPosts = () => dispatch => (
@@ -72,6 +76,11 @@ export const getFullPost = (id) => dispatch => (
 export const createNewPost = (newPost) => dispatch => (
   Api.fetchCreatePost(newPost)
     .then(post => dispatch(createPost(post)))
+)
+
+export const editPostById = (id, post) => dispatch => (
+  Api.fetchEditPost(id, post)
+    .then(post => dispatch(editPost(post)))
 )
 
 export const deletePostById = (id) => dispatch => (

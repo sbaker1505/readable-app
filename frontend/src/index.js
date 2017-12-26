@@ -5,6 +5,7 @@ import './css/index.css';
 import App from './Components/App';
 import Post from './Components/Post';
 import CreatePost from './Components/CreatePost';
+import EditPost from './Components/EditPost';
 import CreateComment from './Components/CreateComment';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -39,6 +40,12 @@ ReactDOM.render(
           exact path='/post/:id'
           render={({ match, history }) => (
             <Post id={match.params.id} path={history}/>
+          )}
+        />
+        <Route
+          exact path='/post/:id/edit'
+          render={({ match, history }) => (
+            <EditPost id={match.params.id} path={history}/>
           )}
         />
         <Route

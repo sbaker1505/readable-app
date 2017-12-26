@@ -38,7 +38,12 @@ class Post extends Component  {
                 this.props.removePost(this.props.post.id)
                 this.props.path.push('/')
               }}>Delete</li>
-              <li className="control edit-button">Edit</li>
+              <li className="control edit-button">
+                <Link
+                  to={`/post/${this.props.post.id}/edit`}>
+                    Edit
+                  </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -71,8 +76,8 @@ function mapStateToProps({currentPost}) {
 function mapDispatchToProps(dispatch) {
   return {
     callPostDetails: (id) => { dispatch(getFullPost(id)) },
-    callPostComments: (parentId) => { dispatch(getPostComments(parentId))},
-    removePost: (id) => { dispatch(deletePostById(id))}
+    callPostComments: (parentId) => { dispatch(getPostComments(parentId)) },
+    removePost: (id) => { dispatch(deletePostById(id)) }
   }
 }
 
