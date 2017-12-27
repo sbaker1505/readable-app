@@ -23,7 +23,7 @@ class PostMin extends Component {
               <div className="post-min-icons">
                 <div className="post-icons entypo-comment">{`  ${this.props.post.commentCount}`}</div>
                 <Link
-                  to={`/post/${this.props.post.id}/edit`}
+                  to={`/${this.props.post.category}/${this.props.post.id}/edit`}
                   className="control post-icons entypo-pencil"
                 />
                 <div

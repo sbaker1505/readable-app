@@ -27,7 +27,7 @@ class CreateComment extends Component {
           !== undefined) {
       console.log(this.state);
       this.props.addComment(this.props.parentId, this.state)
-      this.props.path.push(`/post/${this.props.parentId}`)
+      this.props.path.push(`/${this.props.category}/${this.props.parentId}`)
     }
 
     return (

@@ -16,7 +16,7 @@ class EditComment extends Component {
     event.preventDefault();
     console.log(this.state);
     this.props.editComment(this.props.id, this.state)
-    this.props.path.push(`/post/${this.props.parentId}`)
+    this.props.path.push(`/${this.props.category}/${this.props.parentId}`)
   }
 
   handleChange = (event) => {

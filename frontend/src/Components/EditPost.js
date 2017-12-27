@@ -18,7 +18,7 @@ class EditPost extends Component {
     event.preventDefault();
     console.log(this.state);
     this.props.editPost(this.props.id, this.state)
-    this.props.path.push(`/post/${this.props.id}`)
+    this.props.path.push(`/${this.props.category}/${this.props.id}`)
   }
 
   handleChange = (event) => {

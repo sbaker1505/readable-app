@@ -27,7 +27,7 @@ class Comment extends Component {
               <div
                 onClick={this.commentInfoEvent}
                 className="control comment-info-link entypo-info"/>
-              <Link to={`/post/${this.props.comment.parentId}/comment/${this.props.comment.id}/edit`}>
+              <Link to={`/${this.props.category}/${this.props.comment.parentId}/comment/${this.props.comment.id}/edit`}>
                 <div className="control comment-info-link entypo-pencil"/>
               </Link>
               <div

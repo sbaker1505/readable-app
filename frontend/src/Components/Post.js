@@ -20,18 +20,20 @@ class Post extends Component  {
             .map(key =>
               <Comment
                 key={key}
+                category={this.props.post.category}
                 comment={this.props.post.comments[key]}
               />)
     : null
 
     return (
-      this.props.post.error
+      this.props.post.error || (this.props.post.id === undefined)
         ? <div>
             <h1>ERROR 404:</h1>
             <h1>The post with id: {this.props.id} does not exist.</h1>
             <button onClick={() => this.props.path.push('/')}>Go back to Home Page</button>
           </div>
         : <div className="post">
+          {console.log(this.props.post)}
             <div className='post-top'>
               <div className="vote-container">
                 <div
@@ -61,7 +63,7 @@ class Post extends Component  {
                   }}>Delete</li>
                   <li className="control dropdown-link edit-button">
                     <Link
-                      to={`/post/${this.props.post.id}/edit`}>
+                      to={`/${this.props.post.category}/${this.props.post.id}/edit`}>
                         Edit
                     </Link>
                   </li>

@@ -46,9 +46,12 @@ ReactDOM.render(
           )}
         />
         <Route
-          exact path='/post/:id/edit'
+          exact path='/:category/:id/edit'
           render={({ match, history }) => (
-            <EditPost id={match.params.id} path={history}/>
+            <EditPost
+              category={match.params.category}
+              id={match.params.id}
+              path={history}/>
           )}
         />
         <Route
@@ -58,15 +61,19 @@ ReactDOM.render(
           )}
         />
         <Route
-          exact path='/post/:id/comment/new'
+          exact path='/:category/:id/comment/new'
           render={({match, history }) => (
-            <CreateComment parentId={match.params.id} path={history} />
+            <CreateComment
+              category={match.params.category}
+              parentId={match.params.id}
+              path={history} />
           )}
         />
         <Route
-          exact path='/post/:parentId/comment/:id/edit'
+          exact path='/:category/:parentId/comment/:id/edit'
           render={({match, history }) => (
             <EditComment
+              category={match.params.category}
               parentId={match.params.parentId}
               id={match.params.id}
               path={history}
