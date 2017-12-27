@@ -50,6 +50,12 @@ label {
 .control {
   cursor: pointer;
 }
+.post-icons {
+  padding-right: 20px;
+}
+.post-icons::before {
+  font-size: 18px;
+}
 
 .no-post {
   padding: 10px 0;
@@ -165,6 +171,11 @@ label {
   flex-grow: 1;
   justify-content: space-between;
   align-items: center;
+}
+
+.post-min-icons {
+  padding: 10px 0 0 0;
+  display: flex;
 }
 
 .post-min-link {

@@ -38,9 +38,11 @@ ReactDOM.render(
           )}
         />
         <Route
-          exact path='/post/:id'
+          exact path='/:category/:id'
           render={({ match, history }) => (
-            <Post id={match.params.id} path={history}/>
+            <Post
+              id={match.params.id}
+              path={history}/>
           )}
         />
         <Route

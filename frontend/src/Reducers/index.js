@@ -69,6 +69,11 @@ function post (state = {}, action) {
         ...state,
         post
       }
+    case DELETE_POST :
+      return {
+        ...state,
+        [id]: null
+      }
     case POST_VOTE :
       return {
         ...state,
@@ -109,6 +114,11 @@ function currentPost(state = {}, action) {
       return null
     case EDIT_POST :
       return post
+    case POST_VOTE :
+      return {
+        ...state,
+        voteScore: result.voteScore
+      }
     case COMMENT_VOTE :
       return {
         ...state,

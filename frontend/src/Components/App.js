@@ -83,6 +83,7 @@ class App extends Component {
           </div>
           {this.props.post
             ? Object.keys(this.props.post)
+                    .filter(key => this.props.post[key] !== null)
                     .map(key =>
                       <PostMin
                         key={key}

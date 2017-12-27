@@ -46,9 +46,10 @@ export const editPost = post => ({
   post
 })
 
-export const deletePost = post => ({
+export const deletePost = (post, id) => ({
   type: DELETE_POST,
-  post
+  post,
+  id
 })
 
 export const postVote = (result, id) => ({
@@ -85,7 +86,7 @@ export const editPostById = (id, post) => dispatch => (
 
 export const deletePostById = (id) => dispatch => (
   Api.fetchDeletePost(id)
-    .then(post => dispatch(deletePost(post)))
+    .then(post => dispatch(deletePost(post, id)))
 )
 
 export const postVoteScore = (id, vote) => dispatch => (

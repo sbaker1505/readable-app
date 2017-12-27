@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { postVoteScore } from '../Actions'
+import { postVoteScore, deletePostById } from '../Actions'
 import * as moment from 'moment'
 
 class PostMin extends Component {
@@ -13,17 +13,32 @@ class PostMin extends Component {
           <h2 className="vote">{this.props.post.voteScore}</h2>
           <div className="vote-arrow control entypo-down-dir" onClick={() => this.props.callPostVote(this.props.post.id, 'downVote')}></div>
         </div>
-        <Link
-          to={`/post/${this.props.post.id}`}
-          className="post-min-link">
           <div className="post-min">
-            <h1>{this.props.post.title}</h1>
+            <div>
+              <Link
+                to={`/${this.props.post.category}/${this.props.post.id}`}
+                className="post-min-link">
+                  <h1>{this.props.post.title}</h1>
+              </Link>
+              <div className="post-min-icons">
+                <div className="post-icons entypo-comment">{`  ${this.props.post.commentCount}`}</div>
+                <Link
+                  to={`/post/${this.props.post.id}/edit`}
+                  className="control post-icons entypo-pencil"
+                />
+                <div
+                  className="control post-icons entypo-trash"
+                  onClick={() => {
+                  this.props.removePost(this.props.post.id)
+                  }}
+                />
+              </div>
+            </div>
             <div className="post-info">
               <h2>{moment(this.props.post.timestamp).format('lll')}</h2>
               <h2>by {this.props.post.author}</h2>
             </div>
           </div>
-        </Link>
       </div>
     )
   }
@@ -31,7 +46,8 @@ class PostMin extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    callPostVote: (id, vote) => { dispatch(postVoteScore(id, vote)) }
+    callPostVote: (id, vote) => { dispatch(postVoteScore(id, vote)) },
+    removePost: (id) => { dispatch(deletePostById(id)) }
   }
 }
 
